@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 	"time"
+
+	"github.com/farhansolodev/aoc-2023/day1"
 )
 
 func printer(name string) func(any) {
@@ -21,8 +23,9 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
 	printPart1 := printer("part1")
-	p1sum := part1(file)
+	p1sum := day1.Part1(file)
 	printPart1(p1sum)
 	file.Close()
 
@@ -31,7 +34,7 @@ func main() {
 		panic(err)
 	}
 	printPart2 := printer("part2")
-	p2sum := part2(file)
+	p2sum := day1.Part2(file)
 	printPart2(p2sum)
 	file.Close()
 }

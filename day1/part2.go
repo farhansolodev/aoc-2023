@@ -1,4 +1,4 @@
-package main
+package day1
 
 import (
 	"bufio"
@@ -6,11 +6,11 @@ import (
 	"os"
 )
 
-func part2(file *os.File) (sum int) {
+func Part2(file *os.File) (sum int) {
 	reader := bufio.NewReader(file)
-
 	var line []byte
 	var err error
+
 	for {
 		line, err = reader.ReadBytes('\n') // byte slices allocated here are small enough to go on stack so no gc pressure
 		if err != nil {
@@ -23,6 +23,7 @@ func part2(file *os.File) (sum int) {
 		nums := search(line)
 		sum += int(nums[0])*10 + int(nums[1])
 	}
+
 	return sum
 }
 
@@ -39,7 +40,7 @@ const (
 )
 
 /*
-todo: take advantage of each word's spelling to continue early
+todo: take advantage of each word's spelling to reduce the number of comparisons
 */
 func search(line []byte) (nums [2]int8) { // nolint: gocognit
 	// none of these numbers will be >= 127, so int8 won't overflow

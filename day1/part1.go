@@ -1,4 +1,4 @@
-package main
+package day1
 
 import (
 	"bufio"
@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func part1(file *os.File) (sum int) {
+func Part1(file *os.File) (sum int) {
 	reader := bufio.NewReader(file)
 	tmp := []byte{0, 0}
 
