@@ -18,7 +18,7 @@ func part1() {
 	tmp := []byte{0, 0}
 
 	for {
-		line, err := reader.ReadBytes('\n') // byte slices allocated here are small enough to go on stack
+		line, err := reader.ReadBytes('\n') // byte slices allocated here are small enough to go on stack so no gc pressure
 		if err != nil {
 			if err == io.EOF {
 				break
