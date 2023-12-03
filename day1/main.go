@@ -6,10 +6,11 @@ import (
 	"time"
 )
 
-func timer(name string) func() {
+func printer(name string) func(any) {
 	start := time.Now()
-	return func() {
-		fmt.Printf("%s took %v\n", name, time.Since(start))
+	return func(v any) {
+		fmt.Printf("%s: %v\n", name, v)
+		fmt.Printf("-- took %v\n", time.Since(start))
 	}
 }
 
@@ -19,11 +20,11 @@ func main() {
 		panic(err)
 	}
 
-	part1Lap := timer("part1")
-	fmt.Println(part1(file))
-	part1Lap()
+	printPart1 := printer("part1")
+	p1sum := part1(file)
+	printPart1(p1sum)
 
-	part2Lap := timer("part2")
-	fmt.Println(part2(file))
-	part2Lap()
+	printPart2 := printer("part2")
+	p2sum := part2(file)
+	printPart2(p2sum)
 }
