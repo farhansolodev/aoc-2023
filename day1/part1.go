@@ -7,7 +7,6 @@ import (
 )
 
 func part1(file *os.File) (sum int) {
-	defer file.Close()
 	reader := bufio.NewReader(file)
 	tmp := []byte{0, 0}
 
