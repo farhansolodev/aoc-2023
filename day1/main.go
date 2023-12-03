@@ -6,20 +6,24 @@ import (
 	"time"
 )
 
-func timer() func() {
+func timer(name string) func() {
 	start := time.Now()
 	return func() {
-		fmt.Printf("took %v\n", time.Since(start))
+		fmt.Printf("%s took %v\n", name, time.Since(start))
 	}
 }
 
 func main() {
-	defer timer()()
 	file, err := os.Open("input.txt")
-	defer file.Close()
 	if err != nil {
 		panic(err)
 	}
+
+	part1Lap := timer("part1")
 	fmt.Println(part1(file))
+	part1Lap()
+
+	part2Lap := timer("part2")
 	fmt.Println(part2(file))
+	part2Lap()
 }
