@@ -5,7 +5,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/farhansolodev/aoc-2023/day1"
+	day1 "github.com/farhansolodev/aoc-2023/src"
 )
 
 func printer(name string) func(any) {
