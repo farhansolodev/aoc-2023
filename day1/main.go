@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"time"
 )
 
@@ -13,6 +14,12 @@ func timer() func() {
 }
 
 func main() {
-	// part1()
-	part2()
+	defer timer()()
+	file, err := os.Open("input.txt")
+	defer file.Close()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(part1(file))
+	fmt.Println(part2(file))
 }

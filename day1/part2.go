@@ -6,20 +6,11 @@ import (
 	"os"
 )
 
-// should get 55291
-func part2() {
-	defer timer()()
-	file, err := os.Open("big.txt")
-	defer file.Close()
-	if err != nil {
-		panic(err)
-	}
-
+func part2(file *os.File) (sum int) {
 	reader := bufio.NewReader(file)
-	var sum int = 0 // overflows if smaller than int16
 
-	// i := 1
 	var line []byte
+	var err error
 	for {
 		line, err = reader.ReadBytes('\n') // byte slices allocated here are small enough to go on stack so no gc pressure
 		if err != nil {
@@ -29,16 +20,10 @@ func part2() {
 			panic(err)
 		}
 
-		// if i == 78 {
-		// 	println("bleh")
-		// }
 		nums := search(line)
-		// presum := sum
 		sum += int(nums[0])*10 + int(nums[1])
-		// fmt.Printf("%d = %d + %d*10 + %d\n", sum, presum, int(nums[0]), int(nums[1]))
-		// i++
 	}
-	println(sum)
+	return sum
 }
 
 const (

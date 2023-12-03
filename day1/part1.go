@@ -6,15 +6,8 @@ import (
 	"os"
 )
 
-func part1() {
-	file, err := os.Open("input.txt")
-	defer file.Close()
-	if err != nil {
-		panic(err)
-	}
-
+func part1(file *os.File) (sum int) {
 	reader := bufio.NewReader(file)
-	var sum int = 0 // overflows if smaller than int16
 	tmp := []byte{0, 0}
 
 	for {
@@ -50,5 +43,5 @@ func part1() {
 		sum += int(num)
 	}
 
-	println(sum)
+	return sum
 }
