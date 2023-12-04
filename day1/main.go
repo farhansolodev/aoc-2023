@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os"
 	"time"
@@ -18,10 +19,11 @@ func printer(name string) func(any) {
 }
 
 func main() {
-	const filepath = "input.txt"
+	filepath := flag.String("file", "input.txt", "path to input file")
+	flag.Parse()
 
 	// part 1
-	file, err := os.Open(filepath)
+	file, err := os.Open(*filepath)
 	if err != nil {
 		panic(err)
 	}
@@ -31,7 +33,7 @@ func main() {
 	file.Close()
 
 	// part 2
-	file, err = os.Open(filepath)
+	file, err = os.Open(*filepath)
 	if err != nil {
 		panic(err)
 	}
