@@ -7,6 +7,6 @@ Project structure
 		part1.go
 		part2.go
  	main.go
- + day2/
- 	(coming soon)
++ day2/
+	(coming soon)
 ```
