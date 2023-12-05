@@ -27,6 +27,7 @@ func benchmark(input string, part int, b *testing.B) {
 	default:
 		panic("invalid part provided")
 	}
+	file.Close()
 	result = r
 }
 
