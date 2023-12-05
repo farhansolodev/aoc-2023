@@ -6,8 +6,8 @@ Project structure
 	+ src/
 		part1.go
 		part2.go
-	+ test/
-		bench.go
+	+ bench/
+		day1_test.go
  	main.go
 + day2/
 	(coming soon)
