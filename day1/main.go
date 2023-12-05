@@ -9,12 +9,10 @@ import (
 	day1 "github.com/farhansolodev/aoc-2023/src"
 )
 
-func printer(name string) func(any) {
+func timer() func() time.Duration {
 	start := time.Now()
-	return func(v any) {
-		duration := time.Since(start)
-		fmt.Printf("%s: %v\n", name, v)
-		fmt.Printf("-- took %v\n", duration)
+	return func() time.Duration {
+		return time.Since(start)
 	}
 }
 
@@ -27,18 +25,24 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	printPart1 := printer("part1")
+	getPart1Duration := timer()
 	p1sum := day1.Part1(file)
-	printPart1(p1sum)
+	p1d := getPart1Duration()
 	file.Close()
+	fmt.Printf("%s: %v\n", "part1", p1sum)
+	fmt.Printf("-- took %v\n", p1d)
 
 	// part 2
 	file, err = os.Open(*filepath)
 	if err != nil {
 		panic(err)
 	}
-	printPart2 := printer("part2")
+	getPart2Duration := timer()
 	p2sum := day1.Part2(file)
-	printPart2(p2sum)
+	p2d := getPart2Duration()
 	file.Close()
+	fmt.Printf("%s: %v\n", "part2", p2sum)
+	fmt.Printf("-- took %v\n", p2d)
+
+	fmt.Printf("\nPart 2 took %fx longer", float32(p2d.Microseconds())/float32(p1d.Microseconds()))
 }
