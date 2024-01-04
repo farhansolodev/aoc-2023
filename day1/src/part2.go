@@ -8,11 +8,9 @@ import (
 
 func Part2(file *os.File) (sum int) {
 	reader := bufio.NewReader(file)
-	var line []byte
-	var err error
 
 	for {
-		line, err = reader.ReadBytes('\n') // byte slices allocated here are small enough to go on stack so no gc pressure
+		line, err := reader.ReadBytes('\n') // byte slices allocated here are small enough to go on stack so no gc pressure
 		if err != nil {
 			if err == io.EOF {
 				break

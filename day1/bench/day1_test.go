@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	day1 "github.com/farhansolodev/aoc-2023/src"
+	day1 "github.com/farhansolodev/aoc-2023/day1/src"
 )
 
 var result int

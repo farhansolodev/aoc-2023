@@ -1,3 +1,3 @@
-module github.com/farhansolodev/aoc-2023
+module github.com/farhansolodev/aoc-2023/day1
 
 go 1.21.4
